@@ -1,0 +1,8 @@
+<div class="user">
+  <div>이 컴포넌트는 유저 컴포넌트</div>
+  <img [src]="user.imgUrl" class="profile" />
+  <div></div>
+  <span (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+    이름 : {{ user.name }} @if (hover) { ({{ user.age }}세) }
+  </span>
+</div>
