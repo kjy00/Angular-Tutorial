@@ -1,0 +1,15 @@
+<h2>여기는 <span style="color: navy">어바웃페이지</span>거둔요오</h2>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <label for="name">
+    Enter your name
+    <input formControlName="name" type="text" />
+  </label>
+  <label for="age"> age <input formControlName="age" type="text" /> </label>
+  <button type="submit">Submit</button>
+</form>
+
+<div class="user-container">
+  @for (user of users; track $index) {
+  <user-info [user]="user" />
+  }
+</div>

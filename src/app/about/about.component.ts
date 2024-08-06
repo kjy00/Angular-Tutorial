@@ -1,20 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { UserComponent } from './user-info/user-info.component';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { UserService } from '../services/user.service';
+import { IUser } from '../models/user.model';
 
 @Component({
   selector: 'about-root',
-  template: `
-    <h2>여기는 <span style="color:navy;">어바웃페이지</span>거둔요오</h2>
-    @for (user of users; track $index) {
-    <user-info [user]="user" />
-    }
-  `,
-  imports: [UserComponent],
+  templateUrl: './about.component.html',
+  styleUrl: './about.component.css',
+  imports: [UserComponent, FormsModule, ReactiveFormsModule],
+  providers: [UserService],
   standalone: true,
 })
 export class AboutComponent {
-  users = [
-    { name: '김지윤', age: '25', imgUrl: 'profile.jpg' },
-    { name: 'user2', age: '22', imgUrl: 'profile.jpg' },
-  ];
+  value = '';
+  users: IUser[] = [];
+  profileForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    age: new FormControl('', [Validators.required]),
+  });
+  userService = inject(UserService);
+  constructor() {
+    this.users = this.userService.getUsers();
+  }
+
+  onSubmit() {
+    if (!this.profileForm.valid) {
+      alert('입력값을 확인하세요!');
+      return;
+    }
+    const formValue = this.profileForm.value as Partial<IUser>;
+    if (!formValue.name || !formValue.age) return;
+    this.users.push({
+      name: formValue.name,
+      age: formValue.age,
+      imgUrl: 'profile.jpg',
+    });
+    this.profileForm.reset();
+  }
 }

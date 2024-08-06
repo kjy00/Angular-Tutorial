@@ -1,8 +1,9 @@
 <div class="user">
   <div>이 컴포넌트는 유저 컴포넌트</div>
-  <img [src]="user.imgUrl" class="profile" />
+  <img [ngSrc]="user.imgUrl" width="100" height="130" />
   <div></div>
   <span (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
-    이름 : {{ user.name }} @if (hover) { ({{ user.age }}세) }
+    이름 : {{ user.name | uppercase }} {{ user.name.toUpperCase() }}
+    {{ myUpperCase(user.name) }} @if (hover) { ({{ user.age }}세) }
   </span>
 </div>

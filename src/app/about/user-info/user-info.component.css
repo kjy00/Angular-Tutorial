@@ -1,5 +1,8 @@
 .user {
   border: solid red 2px;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .profile {
