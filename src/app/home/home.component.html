@@ -7,3 +7,17 @@
 } @else {
 <span style="color: brown; margin-left: 10px">...</span>
 }
+
+<h1>HOMES</h1>
+<input placeholder="Filter by city" />
+<button style="margin-left: 10px">Search</button>
+
+<section style="display: flex; gap: 20px; flex-wrap: wrap">
+  <!-- <housing-location
+    *ngFor="let housingLocation of housingLocationList"
+    [housingLocation]="housingLocation"
+  /> -->
+  @for (housingLocation of housingLocationList; track $index) {
+  <housing-location [housingLocation]="housingLocation" />
+  }
+</section>

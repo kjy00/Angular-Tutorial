@@ -9,4 +9,9 @@ export const routes: Routes = [
     title: 'Angular Tutorials About',
     component: AboutComponent,
   },
+  {
+    path: 'about/:id',
+    title: 'About Page',
+    component: AboutComponent,
+  },
 ];
