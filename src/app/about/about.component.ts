@@ -9,18 +9,20 @@ import {
 } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { IUser } from '../models/user.model';
+import SizerComponent from './sizer/sizer.component';
 
 @Component({
   selector: 'about-root',
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
-  imports: [UserComponent, FormsModule, ReactiveFormsModule],
+  imports: [UserComponent, FormsModule, ReactiveFormsModule, SizerComponent],
   providers: [UserService],
   standalone: true,
 })
 export class AboutComponent {
   value = '';
   users: IUser[] = [];
+  fontSizePx = 10;
   profileForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     age: new FormControl('', [Validators.required]),

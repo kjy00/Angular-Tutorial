@@ -6,7 +6,6 @@ import {
   RouterLink,
   RouterOutlet,
 } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs';
 
 @Component({
@@ -19,7 +18,7 @@ import { filter } from 'rxjs';
 export class AppComponent {
   title = 'ngTutorials';
   currentUrl: string = '';
-
+  fontSizePx = 10;
   constructor(private router: Router) {}
   ngOnInit() {
     this.router.events
